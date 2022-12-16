@@ -13,7 +13,7 @@ RUN sed -i \
   -e 's/#LogLevel INFO/LogLevel DEBUG2/' \
   -e 's/\(AuthorizedKeysFile\).*/\1 \tnone/' \
   -e 's/^#\(AuthorizedKeysCommand\) .*/\1 \/etc\/ssh\/ldap-pubkeys.sh/' \
-  -e 's/^#\(AuthorizedKeysCommandUser\) .*/\1 nobody/' \
+  -e 's/^#\(AuthorizedKeysCommandUser\) .*/\1 root/' \
   /etc/ssh/sshd_config
 
 CMD ["/usr/sbin/sshd", "-D", "-e"]
