@@ -16,14 +16,14 @@ git clone https://github.com/liutaurasa/ssh-poc
 ```
 run the script from this repository to do all the work:
 ```
-./run-poc.sh
+bash ./run-poc.sh
 ```
 The script will pull fedora/ssh and 389ds/dirsrv containers, will use `podman build` modify ssh container using Dockerfile by installing openldap-clients package for ldapsearch and ldapmodify utilities and will change sshd server configuration to run on port 2200/tcp and use authorizedkeys only provided be AuthorizedKeysCommand.
 When both containers are running you need to submit your ssh pubkey to LDAP. Use helper scripts `ldap-add-pubkey.sh` and `ldap-del-pubkey.sh`. These scripts are also included in **sshsrv** container so you can run them in **sshsrv** container in case you don't have ldapmodify utilities on the host.
 
 To add pubkey to LDAP run the script on the host:
 ```
-./ldap-add-pubkey.sh <pubkey file> localhost
+bash ./ldap-add-pubkey.sh <pubkey file> localhost
 ```
 or copy your pubkey to the sshsrv container and run the script in the container
 ```
